@@ -1,8 +1,9 @@
-def apiDir = "${env.WORKSPACE}/db/api"
-def lwcDir = "${env.WORKSPACE}/salesforce/my-conservation-life"
-               
 pipeline {
     agent any
+    environment {
+        def apiDir = "${env.WORKSPACE}/db/api"
+        def lwcDir = "${env.WORKSPACE}/salesforce/my-conservation-life"
+    }
     stages {
         stage('Build API') {
             steps {
