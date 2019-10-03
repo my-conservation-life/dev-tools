@@ -1,14 +1,14 @@
 pipeline {
     agent any
     parameters {
-        string(API_DIR: "${env.WORKSPACE}/db/api", LWC_DIR: "${env.WORKSPACE}/salesforce/my-conservation-life")
+        string(apiDir: "${env.WORKSPACE}/db/api", lwcdir: "${env.WORKSPACE}/salesforce/my-conservation-life")
     }
 
     stages {
         stage('Build API') {
             steps {
                 sh """
-                    cd $WORK_DIR
+                    cd ${params.apiDir}
                     npm install
                     npm update
                 """
@@ -17,7 +17,7 @@ pipeline {
         stage('Test API') {
             steps {
                 sh """
-                    cd $API_DIR
+                    cd ${params.apiDir}
                     npm install-test
                 """
             }
@@ -25,7 +25,7 @@ pipeline {
         stage('Package API') {
             steps { 
                 sh """
-                    cd $WORK_DIR
+                    cd ${params.apiDir}
                     npm pack
                 """
             }
@@ -33,7 +33,7 @@ pipeline {
         stage('Build LWC') {
             steps {
                 sh """
-                    cd $LWC_DIR
+                    cd ${params.lwcDir}
                     npm install
                     npm update
                 """
@@ -42,7 +42,7 @@ pipeline {
         stage('Test LWC') {
             steps {
                 sh """
-                    cd $LWC_DIR
+                    cd ${params.lwcDir}
                     npm install-test
                 """
             }
@@ -50,7 +50,7 @@ pipeline {
         stage('Package LWC') {
             steps { 
                 sh """
-                    cd $LWC_DIR
+                    cd ${params.lwcDir}
                     npm pack
                 """
             }
