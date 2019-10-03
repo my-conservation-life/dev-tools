@@ -1,0 +1,76 @@
+pipeline {
+    agent any
+    parameters {
+        string(API_DIR: "${env.WORKSPACE}/db/api", LWC_DIR: "${env.WORKSPACE}/salesforce/my-conservation-life")
+    }
+
+    stages {
+        stage('Build API') {
+            steps {
+                sh """
+                    cd $WORK_DIR
+                    npm install
+                    npm update
+                """
+            }
+        }
+        stage('Test API') {
+            steps {
+                sh """
+                    cd $API_DIR
+                    npm install-test
+                """
+            }
+        }
+        stage('Package API') {
+            steps { 
+                sh """
+                    cd $WORK_DIR
+                    npm pack
+                """
+            }
+        }
+        stage('Build LWC') {
+            steps {
+                sh """
+                    cd $LWC_DIR
+                    npm install
+                    npm update
+                """
+            }
+        }
+        stage('Test LWC) {
+            steps {
+                sh """
+                    cd $LWC_DIR
+                    npm install-test
+                """
+            }
+        }
+        stage('Package LWC') {
+            steps { 
+                sh """
+                    cd $LWC_DIR
+                    npm pack
+                """
+            }
+        }
+        stage('Clean') {
+            steps {
+                sh """
+                    cd $WORKSPACE
+                    mv ./salesforce/my-conservation-life/my-conservation-life*.tgz ./
+                    rm -rf salesforce/ db/ LICENSE README.md package-lock.json
+                """
+            }
+        }
+    }
+    post {
+        success {
+            slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")        
+        }
+    }
+    failure {
+        slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+    }
+}
