@@ -39,7 +39,7 @@ pipeline {
                 """
             }
         }
-        stage('Test LWC) {
+        stage('Test LWC') {
             steps {
                 sh """
                     cd $LWC_DIR
