@@ -8,59 +8,59 @@ pipeline {
         stage('Build API') {
             steps {
                 sh """
-                    cd ${apiDir}
-                    npm install
-                    npm update
+                    sudo cd ${apiDir}
+                    sudo npm install
+                    sudo npm update
                 """
             }
         }
         stage('Test API') {
             steps {
                 sh """
-                    cd ${apiDir}
-                    npm install-test
+                    sudo cd ${apiDir}
+                    sudo npm install-test
                 """
             }
         }
         stage('Package API') {
             steps { 
                 sh """
-                    cd ${apiDir}
-                    npm pack
+                    sudo cd ${apiDir}
+                    sudo npm pack
                 """
             }
         }
         stage('Build LWC') {
             steps {
                 sh """
-                    cd ${lwcDir}
-                    npm install
-                    npm update
+                    sudo cd ${lwcDir}
+                    sudo npm install
+                    sudo npm update
                 """
             }
         }
         stage('Test LWC') {
             steps {
                 sh """
-                    cd ${lwcDir}
-                    npm install-test
+                    sudo cd ${lwcDir}
+                    sudo npm install-test
                 """
             }
         }
         stage('Package LWC') {
             steps { 
                 sh """
-                    cd ${lwcDir}
-                    npm pack
+                    sudo cd ${lwcDir}
+                    sudo npm pack
                 """
             }
         }
         stage('Clean') {
             steps {
                 sh """
-                    cd $WORKSPACE
-                    mv ./salesforce/my-conservation-life/my-conservation-life*.tgz ./
-                    rm -rf salesforce/ db/ LICENSE README.md package-lock.json
+                    sudo cd $WORKSPACE
+                    sudo mv ./salesforce/my-conservation-life/my-conservation-life*.tgz ./
+                    sudo rm -rf salesforce/ db/ LICENSE README.md package-lock.json
                 """
             }
         }
