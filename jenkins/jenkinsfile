@@ -8,7 +8,7 @@ pipeline {
         stage('Build API') {
             steps {
                 sh """
-                    sudo cd ${apiDir}
+                    cd ${apiDir}
                     sudo npm install
                     sudo npm update
                 """
@@ -17,7 +17,7 @@ pipeline {
         stage('Test API') {
             steps {
                 sh """
-                    sudo cd ${apiDir}
+                    cd ${apiDir}
                     sudo npm install-test
                 """
             }
@@ -25,7 +25,7 @@ pipeline {
         stage('Package API') {
             steps { 
                 sh """
-                    sudo cd ${apiDir}
+                    cd ${apiDir}
                     sudo npm pack
                 """
             }
@@ -33,7 +33,7 @@ pipeline {
         stage('Build LWC') {
             steps {
                 sh """
-                    sudo cd ${lwcDir}
+                    cd ${lwcDir}
                     sudo npm install
                     sudo npm update
                 """
@@ -42,7 +42,7 @@ pipeline {
         stage('Test LWC') {
             steps {
                 sh """
-                    sudo cd ${lwcDir}
+                    cd ${lwcDir}
                     sudo npm install-test
                 """
             }
@@ -50,7 +50,7 @@ pipeline {
         stage('Package LWC') {
             steps { 
                 sh """
-                    sudo cd ${lwcDir}
+                    cd ${lwcDir}
                     sudo npm pack
                 """
             }
@@ -58,7 +58,7 @@ pipeline {
         stage('Clean') {
             steps {
                 sh """
-                    sudo cd $WORKSPACE
+                    cd $WORKSPACE
                     sudo mv ./salesforce/my-conservation-life/my-conservation-life*.tgz ./
                     sudo rm -rf salesforce/ db/ LICENSE README.md package-lock.json
                 """
