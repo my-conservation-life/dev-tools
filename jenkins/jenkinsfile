@@ -15,6 +15,7 @@ pipeline {
                 sh """
                     cd ${apiDir}
                     sudo npm install
+                    sudo npm audit fix
                     sudo npm update
                 """
             }
@@ -40,6 +41,7 @@ pipeline {
                 sh """
                     cd ${lwcDir}
                     sudo npm install
+                    sudo npm audit fix
                     sudo npm update
                 """
             }
