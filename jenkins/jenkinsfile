@@ -23,8 +23,7 @@ pipeline {
             steps {
                 sh """
                     cd ${apiDir}
-                    sudo npm install
-                    sudo npm test
+                    sudo npm test -- --detectOpenHandles
                 """
             }
         }
@@ -49,7 +48,6 @@ pipeline {
             steps {
                 sh """
                     cd ${lwcDir}
-                    sudo npm install
                     sudo npm test
                 """
             }
