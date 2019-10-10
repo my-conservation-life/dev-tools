@@ -8,7 +8,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/my-conservation-life/my-conservation-life.git']]])
-                sh "cp /var/lib/jenkins/workspace ${env.WORKSPACE}/db/api/tests"
+                sh "cp /var/lib/jenkins/workspace/.env ${env.WORKSPACE}/db/api/tests"
             }
         }
         stage('Build API') {
