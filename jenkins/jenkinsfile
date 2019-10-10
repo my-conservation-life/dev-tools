@@ -18,7 +18,8 @@ pipeline {
             steps {
                 sh """
                     cd ${apiDir}
-                    sudo npm install-test
+                    sudo npm install
+                    sudo npm test
                 """
             }
         }
@@ -43,7 +44,8 @@ pipeline {
             steps {
                 sh """
                     cd ${lwcDir}
-                    sudo npm install-test
+                    sudo npm install
+                    sudo npm test
                 """
             }
         }
