@@ -67,7 +67,7 @@ pipeline {
         }
         stage('Archive API & LWC') {
             steps {
-                cd ${env.WORKSPACE}
+                cd WORKSPACE
                 archiveArtifacts artifacts: 'api*.tgz, my-conservation-life*.tgz', fingerprint: false
             }
         }
