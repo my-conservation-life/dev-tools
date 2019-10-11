@@ -34,7 +34,7 @@ pipeline {
                 sh """
                     cd ${apiDir}
                     sudo npm pack
-                    sudo mv ./api*.tgz ${env.WORKSPACE}/
+                    sudo mv ./api*.tgz $WORKSPACE/
                 """
             }
         }
@@ -61,13 +61,13 @@ pipeline {
                 sh """
                     cd ${lwcDir}
                     sudo npm pack
-                    sudo mv ./my-conservation-life*.tgz ${env.WORKSPACE}/
+                    sudo mv ./my-conservation-life*.tgz $WORKSPACE/
                 """
             }
         }
         stage('Archive API & LWC') {
             steps {
-                cd WORKSPACE
+                cd $WORKSPACE
                 archiveArtifacts artifacts: 'api*.tgz, my-conservation-life*.tgz', fingerprint: false
             }
         }
