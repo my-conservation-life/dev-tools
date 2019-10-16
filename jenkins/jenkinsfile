@@ -34,6 +34,7 @@ pipeline {
                 sh """
                     cd ${apiDir}
                     sudo npm pack
+                    sudo mv ./api*.tgz $WORKSPACE/
                 """
             }
         }
@@ -60,14 +61,20 @@ pipeline {
                 sh """
                     cd ${lwcDir}
                     sudo npm pack
+                    sudo mv ./my-conservation-life*.tgz $WORKSPACE/
                 """
+            }
+        }
+        stage('Archive API & LWC') {
+            steps {
+                sh """ cd $WORKSPACE """
+                archiveArtifacts artifacts: 'api*.tgz, my-conservation-life*.tgz', fingerprint: false
             }
         }
         stage('Clean') {
             steps {
                 sh """
                     cd $WORKSPACE
-                    sudo mv ./salesforce/my-conservation-life/my-conservation-life*.tgz ./
                     sudo rm -rf salesforce/ db/ LICENSE README.md package-lock.json
                 """
             }
