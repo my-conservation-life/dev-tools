@@ -7,7 +7,15 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/my-conservation-life/my-conservation-life.git']]])
+                checkout([$
+                class: 'GitSCM', 
+                branches: [[name: '${sha1}']], 
+                doGenerateSubmoduleConfigurations: false, 
+                extensions: [], 
+                submoduleCfg: [], 
+                refspec: 
+                userRemoteConfigs: [[refspec: '+refs/heads/*:refs/remotes/origin/* +refs/pull/*:refs/remotes/origin/pr/*', url: 'https://github.com/my-conservation-life/my-conservation-life.git']]
+                ])
                 sh "cp /var/lib/jenkins/workspace/.env ${env.WORKSPACE}/db/api/tests"
             }
         }
