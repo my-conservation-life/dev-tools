@@ -89,10 +89,10 @@ pipeline {
     }
     post {
         success {
-            slackSend color: '#00FF00', message: 'Build ${env.BUILD_NUMBER} finished successfully (<${env.BUILD_URL}|Open>)'       
+            slackSend color: '#00FF00', message: "Build ${env.BUILD_NUMBER} finished successfully (<${env.BUILD_URL}|Open>)"       
         }
         failure {
-            slackSend color: '#FF0000', message: 'Build ${env.BUILD_NUMBER} FAILED (<${env.BUILD_URL}|Open>)'
+            slackSend color: '#FF0000', message: "Build ${env.BUILD_NUMBER} FAILED (<${env.BUILD_URL}|Open>)"
         }
     }
 }
