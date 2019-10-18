@@ -89,10 +89,10 @@ pipeline {
     }
     post {
         success {
-            slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")        
+            slackSend botUser: true, channel: '#jenkins', color: '#00FF00', iconEmoji: ':robot_face:', message: 'Build ${env.BUILD_NUMBER} finished successfully (<${env.BUILD_URL}|Open>)', teamDomain: 'senecaparkzoosp19', tokenCredentialId: 'SlackIntegration', username: 'Lord Jenkins'        
         }
         failure {
-            slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+            slackSend botUser: true, channel: '#jenkins', color: '#FF0000', iconEmoji: ':robot_face:', message: 'Build ${env.BUILD_NUMBER} FAILED (<${env.BUILD_URL}|Open>)', teamDomain: 'senecaparkzoosp19', tokenCredentialId: 'SlackIntegration', username: 'Lord Jenkins'
         }
     }
 }
