@@ -4,6 +4,8 @@ This file contains all information related to the setup of the Jenkins build ser
 
 ## List of Plugins
 
+In order to effectively replicate the original setup, please ensure that all of the following plugins are installed. To see how they are configured in the system configuration settings, scroll down to the **System Configuration** section.
+
 Name | Official Name | Version Installed (as of 19-10-2019)
 * Ant Plugin (ant): 1.10																									
 * Apache HttpComponents Client 4.x API Plugin (apache-httpcomponents-client-4-api): 4.5.5-3.0							
@@ -106,3 +108,20 @@ Name | Official Name | Version Installed (as of 19-10-2019)
 * Token Macro Plugin (token-macro): 2.8																									
 * WMI Windows Agents Plugin (windows-slaves): 1.4																									
 * Workspace Cleanup Plugin (ws-cleanup): 0.37																									
+
+## System Configuration
+* Slack
+** _Workspace_: senecaparkzoosp19 _(or your new Slack instance)
+** _Credential_: SlackIntegration _(get the token from your Slack server after installing the Jenkins app to it)_
+** _Default Channel_: #jenkins _(or your preferred channel)_
+
+* GitHub Pull Request Builder
+** _GitHub Server API URL_: https://api.github.com
+** _Jenkins URL Override_: http://senecaparkzootigers.se.rit.edu:8080/github-webhook/
+** _Shared Secret_: This will be generated for each webhook.
+** _Credentials_: The GitHub user credentials you want to use. They **MUST** be a repo owner.
+** **ADVANCED**
+** _Auto-manage webhooks (yes)_
+** _Admin list_: The GitHub username you want to be the admin.
+
+## Jobs
