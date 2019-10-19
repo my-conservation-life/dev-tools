@@ -125,3 +125,32 @@ Name | Official Name | Version Installed (as of 19-10-2019)
   * _Admin list_: The GitHub username you want to be the admin.
 
 ## Jobs
+* autoPullRequest
+  This is a multi-job pipeline that kicks off the PR-Pipeline when Pull Requests are created.
+  * **Configuration:**
+    * _Github project_: https://github.com/my-conservation-life/my-conservation-life/
+    * _Source Code Management_: 
+      * Git
+      * _Repository URL_: https://github.com/my-conservation-life/my-conservation-life
+      * _Credentials_: GitHub user credentials
+      * **ADVANCED**
+      * _Name_: origin
+      * _Refspec_: +refs/pull/${ghprbPullId}/\*:refs/remotes/origin/pr/${ghprbPullId}/\*
+      * _Branch Specifier_: ${ghprbActualCommit}
+    * _Build Triggers_:
+      * GitHub Pull Request Builder
+        * _GitHub API credentials_: https://api.github.com : Anonymous connection
+        * _Admin list_: Your admin user
+        * _Use github hooks for build triggering_
+        * **ADVANCED**
+        * _List of organizations_: my-conservation-life (or your org)
+        * _Build every pull request automatically without asking_
+     * _Build_:
+       * _Trigger/call builds on other projects_
+         * _Projects to build_: PR-Pipeline
+         * _Block until the triggered projects finish their builds_
+         * Fail build step if any are worse than UNSTABLE
+       * _GitHub PR: Set 'pending' status
+         * Default message is fine
+       
+      
