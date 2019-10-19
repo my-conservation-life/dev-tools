@@ -154,6 +154,7 @@ Name | Official Name | Version Installed (as of 19-10-2019)
        * _GitHub PR: Set 'pending' status_
          * Default message is fine
 * master
+  
   This is a Pipeline that runs a jenkinsfile to build the master branch and create binary files
     * **Configuration**
       * _Github project_: https://github.com/my-conservation-life/my-conservation-life/
@@ -167,6 +168,7 @@ Name | Official Name | Version Installed (as of 19-10-2019)
         * _Lightweight checkout_
         
 * jenkinsfileTesting
+  
   This is a pipeline that runs branches of the dev-tools repo to test new jenkinsfile changes. It's configuration is almost identical to _master_
   * **Configuration**
       * _Github project_: https://github.com/my-conservation-life/my-conservation-life/
@@ -180,6 +182,7 @@ Name | Official Name | Version Installed (as of 19-10-2019)
         * _Lightweight checkout_
      
 * PR-Pipeline
+  
   This is a pipleine that runs PRs and builds them the same as master to check for issues before merging. It is called by the autoPullRequest job.
   * **Configuration**
       * _Github project_: https://github.com/my-conservation-life/my-conservation-life/
@@ -190,9 +193,10 @@ Name | Official Name | Version Installed (as of 19-10-2019)
         * _Credentials_: -none-
         * _Branches_: \*/master
         * _Script Path_: jenkins/jenkinsfile (if using the current repo)
+        * _Lightweight checkout_
+
         
 ###### Last updated: Oct 19, 2019
-        * _Lightweight checkout_
   
 
       
