@@ -125,6 +125,7 @@ Name | Official Name | Version Installed (as of 19-10-2019)
   * _Admin list_: The GitHub username you want to be the admin.
 
 ## Jobs
+  If nothing is specified below for an option, that means leave it as default. 
 * autoPullRequest
   This is a multi-job pipeline that kicks off the PR-Pipeline when Pull Requests are created.
   * **Configuration:**
@@ -150,7 +151,48 @@ Name | Official Name | Version Installed (as of 19-10-2019)
          * _Projects to build_: PR-Pipeline
          * _Block until the triggered projects finish their builds_
          * Fail build step if any are worse than UNSTABLE
-       * _GitHub PR: Set 'pending' status
+       * _GitHub PR: Set 'pending' status_
          * Default message is fine
-       
+* master
+  This is a Pipeline that runs a jenkinsfile to build the master branch and create binary files
+    * **Configuration**
+      * _Github project_: https://github.com/my-conservation-life/my-conservation-life/
+      * _Pipeline_:
+        * _Definition_: Pipeline script from SCM
+        * _SCM_: Git
+        * _Repository URL_: https://github.com/my-conservation-life/dev-tools.git
+        * _Credentials_: -none-
+        * _Branches_: \*/master
+        * _Script Path_: jenkins/jenkinsfile (if using the current repo)
+        * _Lightweight checkout_
+        
+* jenkinsfileTesting
+  This is a pipeline that runs branches of the dev-tools repo to test new jenkinsfile changes. It's configuration is almost identical to _master_
+  * **Configuration**
+      * _Github project_: https://github.com/my-conservation-life/my-conservation-life/
+      * _Pipeline_:
+        * _Definition_: Pipeline script from SCM
+        * _SCM_: Git
+        * _Repository URL_: https://github.com/my-conservation-life/dev-tools.git
+        * _Credentials_: -none-
+        * _Branches_: [Your working branch]
+        * _Script Path_: jenkins/jenkinsfile (if using the current repo)
+        * _Lightweight checkout_
+     
+* PR-Pipeline
+  This is a pipleine that runs PRs and builds them the same as master to check for issues before merging. It is called by the autoPullRequest job.
+  * **Configuration**
+      * _Github project_: https://github.com/my-conservation-life/my-conservation-life/
+      * _Pipeline_:
+        * _Definition_: Pipeline script from SCM
+        * _SCM_: Git
+        * _Repository URL_: https://github.com/my-conservation-life/dev-tools.git
+        * _Credentials_: -none-
+        * _Branches_: \*/master
+        * _Script Path_: jenkins/jenkinsfile (if using the current repo)
+        
+###### Last updated: Oct 19, 2019
+        * _Lightweight checkout_
+  
+
       
