@@ -111,17 +111,17 @@ Name | Official Name | Version Installed (as of 19-10-2019)
 
 ## System Configuration
 * Slack
-** _Workspace_: senecaparkzoosp19 _(or your new Slack instance)
-** _Credential_: SlackIntegration _(get the token from your Slack server after installing the Jenkins app to it)_
-** _Default Channel_: #jenkins _(or your preferred channel)_
+  * _Workspace_: senecaparkzoosp19 _(or your new Slack instance)_
+  * _Credential_: SlackIntegration _(get the token from your Slack server after installing the Jenkins app to it)_
+  * _Default Channel_: #jenkins _(or your preferred channel)_
 
 * GitHub Pull Request Builder
-** _GitHub Server API URL_: https://api.github.com
-** _Jenkins URL Override_: http://senecaparkzootigers.se.rit.edu:8080/github-webhook/
-** _Shared Secret_: This will be generated for each webhook.
-** _Credentials_: The GitHub user credentials you want to use. They **MUST** be a repo owner.
-** **ADVANCED**
-** _Auto-manage webhooks (yes)_
-** _Admin list_: The GitHub username you want to be the admin.
+  * _GitHub Server API URL_: https://api.github.com
+  * _Jenkins URL Override_: http://senecaparkzootigers.se.rit.edu:8080/github-webhook/
+  * _Shared Secret_: This will be generated for each webhook.
+  * _Credentials_: The GitHub user credentials you want to use. They **MUST** be a repo owner.
+  * **ADVANCED**
+  * _Auto-manage webhooks (yes)_
+  * _Admin list_: The GitHub username you want to be the admin.
 
 ## Jobs
