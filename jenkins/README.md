@@ -155,7 +155,7 @@ Name | Official Name | Version Installed (as of 19-10-2019)
          * Default message is fine
 * master
   
-  This is a Pipeline that runs a jenkinsfile to build the master branch and create binary files
+  This is a pipeline that runs a jenkinsfile to build the master branch and create binary files
     * **Configuration**
       * _Github project_: https://github.com/my-conservation-life/my-conservation-life/
       * _Pipeline_:
@@ -183,7 +183,7 @@ Name | Official Name | Version Installed (as of 19-10-2019)
      
 * PR-Pipeline
   
-  This is a pipleine that runs PRs and builds them the same as master to check for issues before merging. It is called by the autoPullRequest job.
+  This is a pipeline that runs PRs and builds them the same as master to check for issues before merging. It is called by the autoPullRequest job.
   * **Configuration**
       * _Github project_: https://github.com/my-conservation-life/my-conservation-life/
       * _Pipeline_:
